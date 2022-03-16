@@ -39,3 +39,4 @@ forecasts/2003.npy : models/2003.pkl fake_data/2003.npy
 
 forecasts/2004.npy : models/2004.pkl fake_data/2004.npy 
 	python forecast.py --year 2004 --data-dir fake_data --model-dir models --output-dir forecasts
+

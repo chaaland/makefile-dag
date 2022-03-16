@@ -61,3 +61,7 @@ $(FORECAST_DIR)/2003.npy : $(MODEL_DIR)/2003.pkl $(DATA_DIR)/2003.npy
 
 $(FORECAST_DIR)/2004.npy : $(MODEL_DIR)/2004.pkl $(DATA_DIR)/2004.npy 
 	$(FORECAST_EXE) --year 2004 --data-dir $(DATA_DIR) --model-dir $(MODEL_DIR) --output-dir $(FORECAST_DIR)
+
+# graph DAG
+makefile-dag.png: MakefileV4.mk
+	make -Bnd -f $< | make2graph | dot -Tpng -Gdpi=300 -o $@

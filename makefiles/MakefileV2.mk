@@ -5,7 +5,6 @@ all: forecasts/2001.npy forecasts/2002.npy forecasts/2003.npy forecasts/2004.npy
 clean : 
 	rm -rf models/ forecasts/ fake_data/
 
-
 # pull data
 fake_data/2000.npy : 
 	python data.py --start "2000-01-01" --end "2000-12-31" --output-dir fake_data
@@ -47,3 +46,7 @@ forecasts/2003.npy : models/2003.pkl fake_data/2003.npy
 
 forecasts/2004.npy : models/2004.pkl fake_data/2004.npy 
 	python forecast.py --year 2004 --data-dir fake_data --model-dir models --output-dir forecasts
+
+# graph DAG
+makefile-dag.png: MakefileV2.mk
+	make -Bnd -f MakefileV2.mk | make2graph | dot -Tpng -Gdpi=300 -o makefile-dag.png
