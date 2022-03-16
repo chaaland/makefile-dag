@@ -28,15 +28,15 @@ A common misconception is that `make` is a build tool for C/C++. It is that. But
 ### V1
 [Here](makefiles/MakefileV1.mk) is a simple makefile that encapsulates the described research workflow.
 
-Each component of the Makefile is of the form
+Each component of the Makefile is called a _rule_. Each one is of the form
 ```
-<target> : <dependency_1> ... <dependency_n>
+<target> : <prereq_1> ... <prereq_n>
     <action>
 ```
 
 A *target* is the file to be created or built. This is the equivalent of the `output()` method in luigi.
 
-To the right of the colon are the _dependencies_. This is equivalent of the `requires()` method in luigi.
+To the right of the colon are the _prerequisites_. This is equivalent of the `requires()` method in luigi.
 
 The *action* is indented on the line below (there can be multiple). This is the equivalent of the `run()` method in luigi.
 
