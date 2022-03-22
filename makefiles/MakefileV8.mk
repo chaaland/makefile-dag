@@ -17,9 +17,6 @@ END=2004
 DATA_YEARS := $(shell seq $(START) $(END))
 DATA_FILES := $(patsubst %, $(DATA_DIR)/%.npy, $(DATA_YEARS))
 
-MODEL_FILES := $(patsubst $(DATA_DIR)/%.npy, $(MODEL_DIR)/%.pkl, $(DATA_FILES))
-MODEL_FILES := $(filter-out $(MODEL_DIR)/$(START).npy, $(MODEL_FILES))
-
 FORECAST_FILES := $(patsubst $(DATA_DIR)/%, $(FORECAST_DIR)/%, $(DATA_FILES))
 FORECAST_FILES := $(filter-out $(FORECAST_DIR)/$(START).npy, $(FORECAST_FILES))
 
@@ -36,7 +33,6 @@ variables :
 	@echo TRAIN_EXE: $(TRAIN_EXE)
 	@echo FORECAST_EXE: $(FORECAST_EXE)
 	@echo DATA_FILES: $(DATA_FILES)
-	@echo MODEL_FILES: $(MODEL_FILES)
 	@echo FORECAST_FILES: $(FORECAST_FILES)
 
 # pull data
